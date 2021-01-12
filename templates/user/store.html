@@ -1,0 +1,109 @@
+
+{% extends 'user/base.html' %}
+{% block content %}
+{% load static %}
+{#    <h1>Admin Dashboard</h1>#}
+    <style>
+      input[type=text]{
+          width: 100%;
+          border: 2px solid black;
+          border-radius: 4px;
+          margin: 8px 0;
+          outline: none;
+          padding: 8px;
+          box-sizing: border-box;
+      }
+      input[type=text]:focus{
+          border-color: #51eaea;;
+          box-shadow: 0 0 8px 0 #51eaea;;
+
+      }
+    </style>
+<div id="page-inner" >
+
+        </div>
+
+
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="pharmacy/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Medicine List</strong></div>
+        </div>
+      </div>
+    </div>
+
+   <div class="site-section">
+      <div class="container">
+       <form  method="post">
+                        {% csrf_token %}
+            <div class="row cat_search">
+                <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: black;" class="text-black"><img src="{% static 'images/sharp_search_black_18dp.png' %}"> Search Medicines </label>
+                  <input type="text" class="control" name="sr" placeholder="Enter medicine type" required>
+                </div>
+
+              </div>
+
+
+             </div>
+           <button type="submit"  name="name" style="background-color: white"  ><img  src="{% static 'images/sharp_search_black_18dpgfddf.png' %}">Search</button>
+          </form>
+
+        <div class="row">
+          <div class="col-lg-6">
+
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+        </div>
+
+
+        <div class="row">
+            {% for medicine in medicine %}
+                {% if medicine.t_quantity <= '0' %}
+
+
+            <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <a href=""> <img style="height: 300px;width: 300px" src="{{ medicine.image.url }}" alt="Image"></a>
+                <table>
+                    <tr> <td><h3 class="text-dark"><a href="">Medicine Name : </a></h3></td><td>{{ medicine.name }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Company : </a></h3></td><td>{{ medicine.companyname }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Price : </a></h3></td><td>{{ medicine.price }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Pharmacy name : </a></h3></td><td>{{ medicine.user.first_name }}</td></tr>
+                    <tr> <td>Out Of Stock</td></tr>
+                </table>
+
+
+          </div>
+                {% else %}
+                <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <a href=""> <img style="height: 300px;width: 300px" src="{{ medicine.image.url }}" alt="Image"></a>
+                <table>
+                    <tr> <td><h3 class="text-dark"><a href="">Medicine Name : </a></h3></td><td>{{ medicine.name }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Company : </a></h3></td><td>{{ medicine.companyname }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Price : </a></h3></td><td>{{ medicine.price }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Pharmacy name : </a></h3></td><td>{{ medicine.user.first_name }}</td></tr>
+                    <tr> <td><a href="" class="btn btn-info">Add to Cart</a>&nbsp;&nbsp;&nbsp;<a href="medicine_details?id={{ medicine.id }}" class="btn btn-info">Details</a></td></tr>
+                </table>
+
+
+          </div>
+{% endif %}
+            {% endfor %}
+
+
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

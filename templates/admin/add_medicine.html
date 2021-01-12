@@ -1,0 +1,109 @@
+
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    <style type="text/css">
+    label{
+        color: white;
+    }
+
+    </style>
+<div class="site-blocks-cover" style="background-image: url({% static 'images/hero_1.jpg' %}); height: 900px">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center"><label style="font-size: 30px">Add Medicine.</label>
+
+
+
+                <div class="p-3 p-lg-5 border">
+
+
+
+              <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_companyname" style="color: white;" class="text-black">Medicine Name<span class="text-danger">*</span> </label>#}
+                  <input type="text" class="form-control" id="c_companyname" placeholder="Medicine Name" name="name" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_address" style="color: white;" class="text-black">Description <span class="text-danger">*</span></label>#}
+                  <input type="text" class="form-control" id="c_address" name="description" placeholder="Medicine Description" autocomplete="off" required>
+                </div>
+              </div>
+
+                    <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_address" style="color: white;" class="text-black">Medicine Type <span class="text-danger">*</span></label>#}
+                  <input type="text" class="form-control" id="c_address" name="type" placeholder="Medicine Type" autocomplete="off" required>
+                </div>
+              </div>
+
+                     <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_address" style="color: white;" class="text-black">Company <span class="text-danger">*</span></label>#}
+                  <input type="text" class="form-control" id="c_address" name="company" placeholder="Company Name" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_address" style="color: white;" class="text-black">qty <span class="text-danger">*</span></label>#}
+                  <input type="text" class="form-control" id="c_address" name="qty" placeholder="Quantity" autocomplete="off" required>
+                </div>
+              </div>
+                <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_address" style="color: white;" class="text-black">Expire Date <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" id="c_address" name="expdate" placeholder="Expire Date" autocomplete="off" required>
+                </div>
+              </div>
+                    <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black">Upload Image <span class="text-danger">*</span> </label>
+                  <input type="file" class="form-control" id="c_companyname" name="image" autocomplete="off" required>
+                </div>
+              </div>
+                      <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_companyname" style="color: white;" class="text-black">Price(Rs)<span class="text-danger">*</span> </label>#}
+                  <input type="text" class="form-control" id="c_companyname" placeholder="Enter Price" name="price" autocomplete="off" required>
+                </div>
+              </div>
+                <div class="form-group row">
+                <div class="col-md-12">
+{#                  <label for="c_companyname" style="color: white;" class="text-black"><span class="text-danger">*</span> </label>#}
+                  <select  class="form-control" name="pharmacy" required>
+                      <option value="">Select Pharmacy</option>
+                      {% for pharmacy in pharmacy  %}
+                      <option value="{{ pharmacy.id}}">{{ pharmacy.user.first_name}}</option>
+                       {% endfor %}
+                      </select>
+                </div>
+              </div>
+
+
+
+
+ <div class="form-group row">
+                <div class="col-md-12">
+                    <button type="submit" value="Register" class="btn btn-info">Add</button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+{% endblock %}

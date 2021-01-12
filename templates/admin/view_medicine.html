@@ -1,0 +1,62 @@
+
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+{#    <h1>Admin Dashboard</h1>#}
+<div id="page-inner" >
+
+        </div>
+
+
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="pharmacy/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Medicine List</strong></div>
+        </div>
+      </div>
+    </div>
+
+   <div class="site-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+        </div>
+
+
+        <div class="row">
+            {% for medicine in medicine  %}
+
+            <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <a href="medicine_details?id={{ medicine.id }}"> <img style="height: 300px;width: 300px"src="{{ medicine.image.url }}" alt="Image"></a>
+                <table>
+                    <tr> <td><h3 class="text-dark"><a href="">Medicine Name : </a></h3></td><td>{{ medicine.name }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Company : </a></h3></td><td>{{ medicine.companyname }}</td></tr>
+                    <tr> <td><h3 class="text-dark"><a href="">Price : </a></h3></td><td>{{ medicine.price }}</td></tr>
+                    <tr> <td><a href="update?id={{ medicine.id }}" class="btn btn-info">Update</a></td><td><a href="remove?id={{ medicine.id }}" class="btn btn-danger">Remove</a></td></tr>
+                </table>
+
+
+          </div>
+
+            {% endfor %}
+            
+
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a
+              href="">Update Medicine</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{ medicine.name }}, {{ medicine.net_weight }}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mr-auto">
+            <div class="border text-center">
+              <img src="{{ medicine.image.url }}" alt="Image" class="img-fluid p-5">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">{{ medicine.name }}, {{ medicine.net_weight }}</h2>
+            <div class="mt-5">
+
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <form method="post">
+                        {% csrf_token %}
+                  <table class="table custom-table">
+                        <input type="hidden" name="id" value="{{ medicine.id }}">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Medicine Name
+                        </th>
+                        <td><input class="form-control" value="{{ medicine.name }}" name="name" required></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Description</th>
+                        <td><input class="form-control" value="{{ medicine.description }}" name="description" required></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Medicine Type</th>
+                        <td><input class="form-control" value="{{ medicine.medtype }}" name="type" required></td>
+                      </tr>
+                       <tr>
+                        <th scope="row">Company</th>
+                        <td><input class="form-control" value="{{ medicine.companyname }}" name="company" required></td>
+                      </tr>
+
+                     <tr>
+                        <th scope="row">Price</th>
+                        <td><input class="form-control" value="{{ medicine.price }}" name="price" required></td>
+                      </tr>
+                    <tr>
+                        <tr>
+                      <th scope="row">Select Pharmacy</th>
+                      <td>
+                  <select  class="form-control" name="pharmacy" required>
+                      <option value="">Current Pharmacy is {{ medicine.user.user.first_name }}</option>
+                      {% for pharmacy in pharmacy  %}
+                      <option value="{{ pharmacy.id}}">{{ pharmacy.user.first_name}}</option>
+                       {% endfor %}
+                      </select>
+                      </td>
+                </tr>
+                        <tr>
+                        <td><input class="btn btn-info" type="submit" value="update" name="" required></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                    </form>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

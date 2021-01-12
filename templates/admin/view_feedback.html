@@ -1,0 +1,65 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+     {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+<div id="page-inner" >
+
+        </div>
+
+
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="admin/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Feedback</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+        </div>
+
+        <div class="row">
+        <h1 style="margin-left: 300px;">Feedback/Suggestions</h1>
+
+<table class="table table-bordered table-striped table-hover">
+
+<th class="info" style="color: #0b0b0b;background-color: #1be0e0">User Name</th>
+<th class="info" style="color: #0b0b0b;background-color: #1be0e0">User Email</th>
+<th class="info" style="color: #0b0b0b;background-color: #1be0e0">Complaint/Suggestion</th>
+<th class="info" style="color: #0b0b0b;background-color: #1be0e0">Ratings</th>
+
+{% for ba in feed  %}
+
+<tr>
+    <td>{{ ba.user.user.first_name}}</td>
+    <td>{{ ba.user.user.email}}</td>
+    <td>{{ ba.complaint }}</td>
+    <td>{{ ba.rate }}</td>
+
+</tr>
+
+    {% endfor %}
+</table>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

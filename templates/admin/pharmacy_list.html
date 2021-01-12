@@ -1,0 +1,68 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+{% load static %}
+{#    <h1>Admin Dashboard</h1>#}
+<div id="page-inner" >
+
+        </div>
+
+
+<div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="admin/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black"> Pharmacy Details</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+        </div>
+
+        <div class="row">
+        <h1 style="margin-left: 300px;"> Pharmacy Details </h1>
+
+            <table class="table table-bordered table-striped table-hover">
+
+<th class="info">Name</th>
+<th class="info">Email</th>
+<th class="info">Contact Number</th>
+<th class="info">Address</th>
+<th class="info">Reject</th>
+{% for pharmacy in pharmacy  %}
+
+<tr>
+    <td>{{ pharmacy.user.first_name}}</td>
+    <td>{{ pharmacy.user.email}}</td>
+    <td>{{ pharmacy.contact}}</td>
+    <td>{{ pharmacy.address}}</td>
+    <td><a href="reject?id={{ pharmacy.user_id}}" class=" btn btn-danger">Remove</a></td>
+
+</tr>
+
+    {% endfor %}
+</table>
+
+
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock %}

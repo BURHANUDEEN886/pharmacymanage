@@ -1,0 +1,78 @@
+
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+    <style type="text/css">
+    label{
+        color: white;
+    }
+
+    </style>
+<div class="site-blocks-cover" style="background-image: url({% static 'images/hero_1.jpg' %});">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center"><label style="font-size: 30px">Pharmacy Registeration.</label>
+                <div class="p-3 p-lg-5 border">
+
+
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black">Pharmacy Name </label>
+                  <input type="text" class="form-control" id="c_companyname" name="name" placeholder="Enter pharmacy name" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_address" style="color: white;" class="text-black">Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_address" name="address" placeholder=" Enter Street address" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="form-group row mb-5">
+                <div class="col-md-6">
+                  <label for="c_email_address" style="color: white;" class="text-black">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="c_email_address" name="email" placeholder=" Enter email id" autocomplete="off" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="c_phone" style="color: white;" class="text-black">Phone <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_phone" name="contact" placeholder="Phone Number" autocomplete="off" pattern="[6-9]{1}[0-9]{9}" oninvalid="setCustomValidity('Please enter Valid Mobile Number')" onkeyup="setCustomValidity('')" required>
+                </div>
+              </div>
+                  <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black">Set Username <span class="text-danger">*</span> </label>
+                  <input type="text" class="form-control" id="c_companyname" placeholder=" Enter username" name="username" autocomplete="off" required>
+                </div>
+              </div>
+                      <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black">Set Password <span class="text-danger">*</span> </label>
+                  <input type="password" class="form-control" id="c_companyname" placeholder="Enter password" name="password" autocomplete="off" required>
+                </div>
+              </div>
+ <div class="form-group row">
+                <div class="col-md-12">
+                    <button type="submit" value="Register" class="btn btn-info">Register</button>
+                </div>
+               <label ><a style="color: black" href="login">Login</a></label>
+              </div>
+
+
+
+            </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

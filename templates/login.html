@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <style type="text/css">
+    label{
+        color: white;
+    }
+    </style>
+<form method="post">
+       {% csrf_token %}
+<div class="site-blocks-cover" style="background-image: url({% static 'images/hero_1.jpg' %});">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center"><label style="font-size: 30px">Login Here.</label>
+
+                <div class="p-3 p-lg-5 border">
+                  <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black"> Username <span class="text-danger">*</span> </label>
+                  <input type="text" class="form-control" id="c_companyname" autocomplete="off" name="username">
+                </div>
+              </div>
+                      <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_companyname" style="color: white;" class="text-black"> Password <span class="text-danger">*</span> </label>
+                  <input type="password" class="form-control" id="c_companyname" autocomplete="off" name="password">
+                </div>
+              </div>
+ <div class="form-group row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-info">Login</button>
+                </div>
+               <label style="color: white"><a href="userreg">User Register</a></label>
+
+              </div>
+
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     </form>
+{% endblock %}
